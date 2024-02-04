@@ -11,7 +11,7 @@ st.markdown("<h1 style='text-align: center;'>Philippines Total Population by Pro
 #Map
 def display_map(location_data: pd.DataFrame):
     fig = px.scatter_mapbox(
-        location_data, lat="Latitude", lon="Longitude", zoom=6.5,
+        location_data, lat="Latitude", lon="Longitude", zoom=5.3,
         hover_name='Name', hover_data=['Population']
     )
     fig.update_layout(mapbox_style="open-street-map")
@@ -24,7 +24,11 @@ Region_1 = 'data/Region 1.csv'
 Region_2 = 'data/Region 2.csv'
 Region_3 = 'data/Region 3.csv'
 Region_4A = 'data/Region 4A.csv'
-
+MIMAROPA = 'data/MIMAROPA.csv'
+Region_5 = 'data/Region 5.csv'
+Region_6 = 'data/Region 6.csv'
+Region_7 = 'data/Region 7.csv'
+Region_8 = 'data/Region 8.csv'
 NCR = 'data/NCR.csv'
 CAR = 'data/CAR.csv'
 
@@ -32,7 +36,8 @@ CAR = 'data/CAR.csv'
 st.header('Select a Region')
 selected_region = st.selectbox('Regions:', 
                                ('Region I – Ilocos Region', 'Region II – Cagayan Valley', 'Region III – Central Luzon', 
-                                'Region IV‑A – CALABARZON', 
+                                'Region IV‑A – CALABARZON', 'MIMAROPA Region', 'Region V – Bicol Region',
+                                'Region VI – Western Visayas', 'Region VII – Central Visayas', 'Region VIII – Eastern Visayas',
                                 'NCR – National Capital Region', 'CAR – Cordillera Administrative Region'))
 
 if selected_region == 'Region I – Ilocos Region':
@@ -109,6 +114,96 @@ elif selected_region == 'Region IV‑A – CALABARZON':
         Its :blue[population] as determined by the 2020 Census was :blue[16,195,042]. This represented 26.04% of the overall population of the Luzon island group, or 14.85% of the 
         entire population of the Philippines. Based on these figures, the population density is computed at 977 inhabitants per square kilometer or 2,530 inhabitants per 
         square mile.
+        """
+    )
+
+elif selected_region == 'MIMAROPA Region':
+    df = pd.read_csv(MIMAROPA, 
+                     usecols=['Name', 'Population', 'Latitude', 'Longitude'])
+    df.columns = ['Name', 'Population', 'Latitude', 'Longitude']
+    px_map = display_map(df)
+    st.plotly_chart(px_map, use_container_width=True)
+    st.markdown("<h2 style='text-align: center;'>MIMAROPA Region</h2>", unsafe_allow_html=True)
+    #st.markdown("<h3 style='text-align: center;'>MIMAROPA</h3>", unsafe_allow_html=True)
+    st.write(
+        """
+        MIMAROPA Region is an administrative region in the Philippines grouped under the Luzon island group. It covers 5 provinces, namely, Marinduque, Occidental Mindoro, 
+        Oriental Mindoro, Palawan, and Romblon, as well as 1 highly urbanized city. The regional center is the City of Calapan.
+
+        Its :blue[population] as determined by the 2020 Census was :blue[3,228,558]. This represented 5.19% of the overall population of the Luzon island group, or 2.96% of the entire 
+        population of the Philippines. Based on these figures, the population density is computed at 109 inhabitants per square kilometer or 282 inhabitants per square mile.
+        """
+    )
+
+elif selected_region == 'Region V – Bicol Region':
+    df = pd.read_csv(Region_5, 
+                     usecols=['Name', 'Population', 'Latitude', 'Longitude'])
+    df.columns = ['Name', 'Population', 'Latitude', 'Longitude']
+    px_map = display_map(df)
+    st.plotly_chart(px_map, use_container_width=True)
+    st.markdown("<h2 style='text-align: center;'>Bicol Region</h2>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align: center;'>Region V</h3>", unsafe_allow_html=True)
+    st.write(
+        """
+        Bicol Region, officially designated as Region V, is an administrative region in the Philippines grouped under the Luzon island group. It covers 6 provinces, 
+        namely, Albay, Camarines Norte, Camarines Sur, Catanduanes, Masbate, and Sorsogon. The regional center is the City of Legazpi.
+
+        Its :blue[population] as determined by the 2020 Census was :blue[6,082,165]. This represented 9.78% of the overall population of the Luzon island group, or 5.58% of the entire 
+        population of the Philippines. Based on these figures, the population density is computed at 336 inhabitants per square kilometer or 870 inhabitants per square mile.
+        """
+    )
+
+elif selected_region == 'Region VI – Western Visayas':
+    df = pd.read_csv(Region_6, 
+                     usecols=['Name', 'Population', 'Latitude', 'Longitude'])
+    df.columns = ['Name', 'Population', 'Latitude', 'Longitude']
+    px_map = display_map(df)
+    st.plotly_chart(px_map, use_container_width=True)
+    st.markdown("<h2 style='text-align: center;'>Western Visayas</h2>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align: center;'>Region VI</h3>", unsafe_allow_html=True)
+    st.write(
+        """
+        Western Visayas, officially designated as Region VI, is an administrative region in the Philippines occupying the western section of the Visayas. It covers 6 provinces, 
+        namely, Aklan, Antique, Capiz, Guimaras, Iloilo, and Negros Occidental, as well as 2 highly urbanized cities. The regional center is the City of Iloilo.
+
+        Its :blue[population] as determined by the 2020 Census was :blue[7,954,723]. This represented 38.65% of the overall population of the Visayas island group, or 7.30% of the entire 
+        population of the Philippines. Based on these figures, the population density is computed at 383 inhabitants per square kilometer or 992 inhabitants per square mile.
+        """
+    )
+
+elif selected_region == 'Region VII – Central Visayas':
+    df = pd.read_csv(Region_7, 
+                     usecols=['Name', 'Population', 'Latitude', 'Longitude'])
+    df.columns = ['Name', 'Population', 'Latitude', 'Longitude']
+    px_map = display_map(df)
+    st.plotly_chart(px_map, use_container_width=True)
+    st.markdown("<h2 style='text-align: center;'>Central Visayas</h2>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align: center;'>Region VII</h3>", unsafe_allow_html=True)
+    st.write(
+        """
+        Central Visayas, officially designated as Region VII, is an administrative region in the Philippines occupying the central section of the Visayas. It covers 4 provinces, 
+        namely, Bohol, Cebu, Negros Oriental, and Siquijor, as well as 3 highly urbanized cities. The regional center is the City of Cebu.
+
+        Its :blue[population] as determined by the 2020 Census was :blue[8,081,988]. This represented 39.26% of the overall population of the Visayas island group, or 7.41% of the entire 
+        population of the Philippines. Based on these figures, the population density is computed at 509 inhabitants per square kilometer or 1,319 inhabitants per square mile.
+        """
+    )
+
+elif selected_region == 'Region VIII – Eastern Visayas':
+    df = pd.read_csv(Region_8, 
+                     usecols=['Name', 'Population', 'Latitude', 'Longitude'])
+    df.columns = ['Name', 'Population', 'Latitude', 'Longitude']
+    px_map = display_map(df)
+    st.plotly_chart(px_map, use_container_width=True)
+    st.markdown("<h2 style='text-align: center;'>Eastern Visayas</h2>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align: center;'>Region VIII</h3>", unsafe_allow_html=True)
+    st.write(
+        """
+        Eastern Visayas, officially designated as Region VIII, is an administrative region in the Philippines occupying the eastern section of the Visayas. It covers 6 provinces, 
+        namely, Biliran, Eastern Samar, Leyte, Northern Samar, Samar, and Southern Leyte, as well as 1 highly urbanized city. The regional center is the City of Tacloban.
+
+        Its :blue[population] as determined by the 2020 Census was :blue[4,547,150]. This represented 22.09% of the overall population of the Visayas island group, or 4.17% of the entire 
+        population of the Philippines. Based on these figures, the population density is computed at 196 inhabitants per square kilometer or 507 inhabitants per square mile.
         """
     )
 
