@@ -2,9 +2,7 @@
 This streamlit app offers insights into population distribution across provinces, cities, and municipalities as of 2020.
 
 ## App Demo
-<p align="center">
-  <img src="Assets/Demo.gif" alt="Demo">
-</p>
+![demo](assets/Demo.gif)
 
 ### Data Sources
 - Data on population derived from the [Philippine Statistics Authority](https://psa.gov.ph/content/2020-census-population-and-housing-2020-cph-population-counts-declared-official-president).
